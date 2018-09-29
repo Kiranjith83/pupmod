@@ -8,7 +8,7 @@ class profile::website {
 
 
   file { [ '/var/www',
-           '/var/www/demo-website', ]:
+    '/var/www/demo-website', ]:
     ensure => directory,
     recurse => 'true',
     mode    => '0755',
