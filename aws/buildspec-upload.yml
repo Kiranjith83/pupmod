@@ -1,0 +1,13 @@
+Codebuild:
+version: 0.2
+
+phases:
+  build:
+    commands:
+     - aws s3 cp $PATHTOPUPPETCREDS .
+     - unzip *config.zip -d config
+     - find config -type d -name '.config' -exec cp -r {} . \;
+     - ls -lash
+     - aws --region $REGION opsworks-cm describe-servers --server-name $PUPPETSERVERNAME --query "Servers[0].EngineAttributes[?Name=='PUPPET_API_CA_CERT'].Value" --output text > .config/ssl/cert/ca.pem
+     - echo $ACCESSTOKEN > .config/puppetlabs/token
+     - puppet-code deploy --all --wait --config-file .config/puppet-code.conf --token-file .config/puppetlabs/token

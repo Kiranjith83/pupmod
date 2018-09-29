@@ -1,0 +1,19 @@
+Codebuild:
+version: 0.2
+
+phases:
+  build:
+    commands:
+     - echo "Validating Code With Puppet Parser"
+     - puppet parser validate manifests/
+     - puppet parser validate scripts/
+     - puppet parser validate site/
+     - puppet parser validate hieradata/
+     - echo "Validating Code With Puppet-Lint"
+     - puppet-lint manifests/
+     - puppet-lint scripts/
+     - puppet-lint site/
+     - puppet-lint hieradata/
+     - echo "Code Validated Successfully"
+
+
