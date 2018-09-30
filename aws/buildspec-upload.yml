@@ -12,4 +12,5 @@ phases:
      - cat .config/ssl/cert/ca.pem
      - echo $ACCESSTOKEN > .config/puppetlabs/token
      - cat .config/puppetlabs/token
+     - cat .config/puppet-code.conf
      - puppet-code deploy --all --wait --config-file .config/puppet-code.conf --token-file .config/puppetlabs/token
