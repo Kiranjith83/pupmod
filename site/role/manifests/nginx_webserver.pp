@@ -1,3 +1,5 @@
+### OpsWorks for Puppet Enterprise example for a static website
+
 class role::nginx_webserver {
 
   #This role would be made of all the profiles that need to be included to make a webserver work

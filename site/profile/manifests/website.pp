@@ -1,15 +1,16 @@
+### OpsWorks for Puppet Enterprise example for a static website
 class profile::website {
   include 'nginx'
 
   group { 'nginx':
-          ensure => 'present',
-          gid    => '502',
-     }
+            ensure => 'present',
+            gid    => '502',
+        }
 
   user { 'nginx':
-        ensure           => 'present',
-       gid              => '502',
-       uid              => '1001',
+          ensure => 'present',
+          gid    => '502',
+          uid    => '1001',
   }
 
   nginx::resource::server{'localhost':
@@ -20,8 +21,8 @@ class profile::website {
 
   file { [ '/var/www',
     '/var/www/demo-website', ]:
-    ensure => directory,
-    recurse => 'true',
+    ensure  => directory,
+    recurse => true,
     mode    => '0755',
     owner   => 'nginx',
     group   => 'nginx',
