@@ -17,7 +17,7 @@ class profile::website {
       www_root             => '/var/www/demo-website',
   }
 
-  file{"/var/www/demo-website":
+  file{["/var/www/", "/var/www/demo-website"]:
     ensure  =>  directory,
     mode    =>  0755,
   }
