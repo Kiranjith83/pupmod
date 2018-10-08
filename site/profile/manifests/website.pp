@@ -20,15 +20,14 @@ class profile::website {
   file { [ '/var/www',
     '/var/www/demo-website', ]:
     ensure => directory,
-    recurse => 'true',
-    mode    => '0755',
+    mode    => 755,
     owner   => 'nginx',
     group   => 'nginx',
   }
 
   file { '/var/www/demo-website/index.html':
     ensure  => file,
-    mode    => '0755',
+    mode    => 755,
     owner   => 'nginx',
     group   => 'nginx',
     content => template('profile/demo-website/index.html.erb'),
