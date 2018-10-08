@@ -12,23 +12,17 @@ class profile::website {
           gid    => '502',
   }
 
+  file { '/var/www/demo-website':
+    recurse => true,
+    ensure => directory,
+    mode    => 755,
+    owner   => 'nginx',
+    group   => 'nginx',
+  }
+
   nginx::resource::server{'localhost':
       use_default_location => false,
       www_root             => '/var/www/demo-website',
-  }
-
-  file {'/var/www':
-    ensure => directory,
-    mode    => 755,
-    owner   => 'nginx',
-    group   => 'nginx',
-  }
-
-  file {'/var/www/demo-website':
-    ensure => directory,
-    mode    => 755,
-    owner   => 'nginx',
-    group   => 'nginx',
   }
 
   file { '/var/www/demo-website/index.html':
