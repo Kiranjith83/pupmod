@@ -1,6 +1,17 @@
 class profile::website {
   include 'nginx'
 
+  group { 'nginx':
+          ensure => 'present',
+          gid    => '502',
+     }
+
+  user { 'nginx':
+        ensure           => 'present',
+       gid              => '502',
+       uid              => '1001',
+  }
+
   nginx::resource::server{'localhost':
       use_default_location => false,
       www_root             => '/var/www/demo-website',
