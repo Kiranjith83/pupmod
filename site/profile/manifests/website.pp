@@ -10,7 +10,6 @@ class profile::website {
   user { 'nginx':
           ensure => 'present',
           gid    => '502',
-          uid    => '1001',
   }
 
   nginx::resource::server{'localhost':
