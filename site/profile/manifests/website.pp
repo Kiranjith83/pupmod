@@ -26,6 +26,6 @@ class profile::website {
     mode    => '0755',
     owner   => 'nginx',
     group   => 'nginx',
-    source  => 'puppet:///modules/profile/demo-website/',
+    content => template('demo-website/index.html.erb', {'node_name' => $facts['trusted']['hostname']}),
   }
 }
