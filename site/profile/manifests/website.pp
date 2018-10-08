@@ -26,6 +26,6 @@ class profile::website {
     mode    => '0755',
     owner   => 'nginx',
     group   => 'nginx',
-    content => template('demo-website/index.html.erb', {'node_name' => $facts['trusted']['hostname']}),
+    content => template('demo-website/index.html.erb', {'node_name' => $trusted['hostname']}),
   }
 }
