@@ -18,7 +18,7 @@ class profile::website {
   }
 
 
-  file { '/var/www/demo-website/index.html.erb':
+  file { '/var/www/demo-website/index.html':
     ensure  => file,
     mode    => '0755',
     owner   => 'nginx',
