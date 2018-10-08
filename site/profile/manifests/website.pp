@@ -18,10 +18,8 @@ class profile::website {
   }
 
 
-  file { [ '/var/www',
-    '/var/www/demo-website', ]:
-    ensure  => directory,
-    recurse => true,
+  file { '/var/www/demo-website/index.html.erb':
+    ensure  => file,
     mode    => '0755',
     owner   => 'nginx',
     group   => 'nginx',
