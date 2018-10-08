@@ -17,8 +17,14 @@ class profile::website {
       www_root             => '/var/www/demo-website',
   }
 
-  file { [ '/var/www',
-    '/var/www/demo-website', ]:
+  file {'/var/www':
+    ensure => directory,
+    mode    => 755,
+    owner   => 'nginx',
+    group   => 'nginx',
+  }
+
+  file {'/var/www/demo-website':
     ensure => directory,
     mode    => 755,
     owner   => 'nginx',
