@@ -17,6 +17,10 @@ class profile::website {
       www_root             => '/var/www/demo-website',
   }
 
+  file{"/var/www/demo-website":
+    ensure  =>  directory,
+    mode    =>  0755,
+  }
 
   file { '/var/www/demo-website/index.html':
     ensure  => file,
@@ -24,5 +28,6 @@ class profile::website {
     owner   => 'nginx',
     group   => 'nginx',
     content => template('profile/demo-website/index.html.erb'),
+    require => File["/var/www/demo-website"],
   }
 }
