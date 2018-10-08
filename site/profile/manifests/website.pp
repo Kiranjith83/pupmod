@@ -12,12 +12,12 @@ class profile::website {
           gid    => '502',
   }
 
-  file { '/var/www/demo-website':
-    recurse => true,
-    ensure => directory,
-    mode    => 755,
-    owner   => 'nginx',
-    group   => 'nginx',
+file { [ '/var/www/',
+         '/var/www/demo-website', ]:
+          ensure => directory,
+          mode   => 755,
+          owner  => 'nginx',
+          group  => 'nginx',
   }
 
   nginx::resource::server{'localhost':
