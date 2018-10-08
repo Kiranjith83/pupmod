@@ -12,12 +12,12 @@ class profile::website {
           gid    => '502',
   }
 
-file { [ '/var/www/',
-         '/var/www/demo-website', ]:
-          ensure => directory,
-          mode   => 755,
-          owner  => 'nginx',
-          group  => 'nginx',
+file { ['/var/www/',
+        '/var/www/demo-website', ]:
+        ensure => directory,
+        mode   => '0755',
+        owner  => 'nginx',
+        group  => 'nginx',
   }
 
   nginx::resource::server{'localhost':
@@ -27,10 +27,10 @@ file { [ '/var/www/',
 
   file { '/var/www/demo-website/index.html':
     ensure  => file,
-    mode    => 755,
+    mode    => '0755',
     owner   => 'nginx',
     group   => 'nginx',
     content => template('profile/demo-website/index.html.erb'),
-    require => File["/var/www/demo-website"],
+    require => File['/var/www/demo-website'],
   }
 }
